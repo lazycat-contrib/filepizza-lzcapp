@@ -1,0 +1,52 @@
+lzc-sdk-version: "0.1"
+name: FilePizza
+package: cloud.lazycat.app.filepizza
+version: 2.0.0
+description: 浏览器中的点对点文件传输
+homepage: https://github.com/kern/filepizza
+author: kern
+application:
+  subdomain: filepizza
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://filepizza:8080/
+  ingress:
+    - protocol: tcp
+      port: 6379
+      service: redis
+    - protocol: tcp
+      port: 3478
+      service: coturn
+    - protocol: udp
+      port: 3478
+      service: coturn
+    - protocol: tcp
+      port: 5349
+      service: coturn
+    - protocol: udp
+      port: 5349
+      service: coturn
+services:
+  redis:
+    image: docker.hlmirror.com/redis:latest
+    binds:
+      - /lzcapp/var/data:/data
+  coturn:
+    image: docker.hlmirror.com/coturn/coturn
+    environment:
+      - DETECT_EXTERNAL_IP=yes
+      - DETECT_RELAY_IP=yes
+    command: -n --log-file=stdout --redis-userdb="ip=redis connect_timeout=30"
+  filepizza:
+    image: docker.hlmirror.com/kern/filepizza:latest
+    environment:
+      - PORT=8080
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
