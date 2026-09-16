@@ -23,23 +23,22 @@ application:
     - protocol: udp
       port: 5349
       service: coturn
-
 services:
   redis:
-    # upstream: redis:7.4.11-alpine
-    image: redis:7.4.11-alpine
+    # upstream: library/redis:7.4.11-alpine
+    image: registry.lazycat.cloud/czyt/library/redis:6af67544b1048089
     binds:
       - /lzcapp/var/data:/data
   coturn:
     # upstream: coturn/coturn:4.18.0-alpine
-    image: coturn/coturn:4.18.0-alpine
+    image: registry.lazycat.cloud/czyt/coturn/coturn:59c2e5e99f8b5f12
     environment:
       - DETECT_EXTERNAL_IP=yes
       - DETECT_RELAY_IP=yes
     command: -n --log-file=stdout --redis-userdb="ip=redis connect_timeout=30"
   filepizza:
-    # upstream: kern/filepizza:latest
-    image: kern/filepizza:latest
+    # upstream: kern/filepizza:latest@sha256:f943c0fac0a4e65e94c06a7261ecd9ad8c86246c6b608fe780569dec663e5934
+    image: registry.lazycat.cloud/czyt/kern/filepizza:d1f8aaa8b38c4415
     environment:
       - PORT=8080
       - REDIS_URL=redis://redis:6379
