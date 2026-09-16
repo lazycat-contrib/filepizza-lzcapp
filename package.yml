@@ -1,0 +1,14 @@
+package: cloud.lazycat.app.filepizza
+version: 2.0.0
+name: FilePizza
+description: "浏览器中的点对点文件传输"
+min_os_version: "1.5.0"
+homepage: https://github.com/kern/filepizza
+author: kern
+locales:
+  zh:
+    description: "浏览器中的点对点文件传输"
+    name: "FilePizza"
+  en:
+    description: "Peer-to-peer file transfer in your browser"
+    name: "FilePizza"
