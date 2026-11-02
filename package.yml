@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.filepizza
-version: 2.0.0
+version: 2.0.1
 name: FilePizza
 description: "浏览器中的点对点文件传输"
 min_os_version: "1.5.0"
