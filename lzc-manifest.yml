@@ -37,8 +37,8 @@ services:
       - DETECT_RELAY_IP=yes
     command: -n --log-file=stdout --redis-userdb="ip=redis connect_timeout=30"
   filepizza:
-    # upstream: kern/filepizza:latest@sha256:de124c4660140f300785f1f9e243938eb93cabf35b768749472cbe8ec8df01c6
-    image: registry.lazycat.cloud/czyt/kern/filepizza:69df3eb4db129629
+    # upstream: kern/filepizza:latest@sha256:b290bc42d2cf01ac23cb1ac4e676aee5b5b1d1bd4c44e1b7f262c6a2cbd8230c
+    image: registry.lazycat.cloud/czyt/kern/filepizza:b85f8017bea28889
     environment:
       - PORT=8080
       - REDIS_URL=redis://redis:6379
