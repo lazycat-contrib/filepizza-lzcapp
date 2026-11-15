@@ -30,8 +30,8 @@ services:
     binds:
       - /lzcapp/var/data:/data
   coturn:
-    # upstream: coturn/coturn:4.18.0-alpine
-    image: registry.lazycat.cloud/czyt/coturn/coturn:59c2e5e99f8b5f12
+    # upstream: coturn/coturn:4.19.0-alpine
+    image: registry.lazycat.cloud/czyt/coturn/coturn:fbc2fda7024312d6
     environment:
       - DETECT_EXTERNAL_IP=yes
       - DETECT_RELAY_IP=yes
