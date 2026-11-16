@@ -30,15 +30,15 @@ services:
     binds:
       - /lzcapp/var/data:/data
   coturn:
-    # upstream: coturn/coturn:4.19.0-alpine
-    image: registry.lazycat.cloud/czyt/coturn/coturn:fbc2fda7024312d6
+    # upstream: coturn/coturn:4.19.1-alpine
+    image: registry.lazycat.cloud/czyt/coturn/coturn:1accd4a0c3efba9b
     environment:
       - DETECT_EXTERNAL_IP=yes
       - DETECT_RELAY_IP=yes
     command: -n --log-file=stdout --redis-userdb="ip=redis connect_timeout=30"
   filepizza:
-    # upstream: kern/filepizza:latest@sha256:b290bc42d2cf01ac23cb1ac4e676aee5b5b1d1bd4c44e1b7f262c6a2cbd8230c
-    image: registry.lazycat.cloud/czyt/kern/filepizza:b85f8017bea28889
+    # upstream: kern/filepizza:latest@sha256:530b9e9dc770c6d40a6c7eca7f995063dcc9a2bc21760f848b1f0e12ae734ed8
+    image: registry.lazycat.cloud/czyt/kern/filepizza:8f7b624b523f01be
     environment:
       - PORT=8080
       - REDIS_URL=redis://redis:6379
